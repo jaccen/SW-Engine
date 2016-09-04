@@ -3,7 +3,7 @@
 Cross-platform  3D engineg, based on Opengl、Opengles、vulkan、DX
 with Editor
 
-until now surpot  platform：
+until now surport  platform：
 
 Windows -----      surport
 
