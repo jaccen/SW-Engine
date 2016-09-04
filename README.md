@@ -1,20 +1,21 @@
 # SW-Engine
 
 Cross-platform  3D engineg, based on Opengl、Opengles、vulkan、DX
+with Editor
 
-platform：
+until now surpot  platform：
 
-Windows-----surport
+Windows -----      surport
 
-Android-----unsurport
+Android ------    unsurport
 
-IOS---------unsurport
+IOS     ---------  unsurport
 
-MaxOS-------unsurport
+MaxOS   -------    unsurport
 
-Web---------unsurport
+Web     ---------  unsurport
 
-Linux-------unsurport
+Linux   -------    unsurport
 
 Doing：
 
