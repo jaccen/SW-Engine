@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.3)
+
 project(SW-Engine)
 
 
@@ -77,8 +78,8 @@ link_directories(
 )
 
 
-set(LIBRARY_GLES3 libGLESv2)
-set(LIBRARY_EGL   libEGL)
+set(LIBRARY_GLES3 ${GLES_ROOT}/external/lib/${SYSTEM_STRING}/libGLESv2.lib)
+set(LIBRARY_EGL   ${GLES_ROOT}/external/lib/${SYSTEM_STRING}/libEGL.lib)
 
 
 # framework library
