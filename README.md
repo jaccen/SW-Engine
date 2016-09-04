@@ -1,27 +1,37 @@
-# SW-Engine
+SW-Engine
 
-Cross-platform  3D engine, based on Opengl、Opengles、vulkan、DX
-with Editor
+Cross-platform 3D engine, based on Opengl、Opengles、vulkan、DX with Editor
 
-until now surport  platform：
+until now, surported platforms：
 
-Windows -----      surport
+Windows ----- surport
 
-Android ------    unsurport
+Android ------ unsurport
 
-IOS     ---------  unsurport
+IOS --------- unsurport
 
-MaxOS   -------    unsurport
+MaxOS ------- unsurport
 
-Web     ---------  unsurport
+Web --------- unsurport
 
-Linux   -------    unsurport
+Linux ------- unsurport
 
 Doing：
 
-（1）Base Framework
+(1)Base Framework
 
 Todo:
 
-（1）
+(1)
 
+
+
+How to use：
+
+For Windows：
+
+Install Cmake；Download the source ；then generate the VS project;
+
+For MAC:
+
+For Android:
