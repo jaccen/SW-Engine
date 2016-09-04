@@ -1,9 +1,8 @@
 # SW-Engine
-Cross-platform  3D engine£¬based on Opengl¡¢opengles2.0¡¢3.0¡¢vulkan
+Cross-platform  3D engineg, based on Openglã€Openglesã€vulkanã€DX
+Doingï¼š
+ï¼ˆ1ï¼‰Base Framework
 
-Doing£º
-£¨1£©Base Framework
+Todo:
 
-Todo£º
-£¨1£©
 
