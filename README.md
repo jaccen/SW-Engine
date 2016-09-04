@@ -1,5 +1,7 @@
 SW-Engine
 
+1. Features
+
 Cross-platform 3D engine, based on Opengl、Opengles、vulkan、DX with Editor
 
 until now, surported platforms：
@@ -26,12 +28,12 @@ Todo:
 
 
 
-How to use：
+2.How to use：
 
-For Windows：
+(1)For Windows：
 
 Install Cmake；Download the source ；then generate the VS project;
 
-For MAC:
+(2)For MAC:
 
-For Android:
+(3)For Android:
