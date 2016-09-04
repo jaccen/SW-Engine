@@ -1,6 +1,6 @@
 # SW-Engine
 
-Cross-platform  3D engineg, based on Opengl、Opengles、vulkan、DX
+Cross-platform  3D engine, based on Opengl、Opengles、vulkan、DX
 with Editor
 
 until now surport  platform：
