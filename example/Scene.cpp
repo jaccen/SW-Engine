@@ -78,7 +78,7 @@ void Sample::finalize() {
 void Sample::update(float dt) {
 
 }
-Sample::Sample() :Application("Blank Window", 400, 400)
+Sample::Sample() :Application("Red Triangle Window", 400, 400)
 {
 
 }

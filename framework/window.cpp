@@ -4,10 +4,139 @@
 
 #include "Window.h"
 #include <iostream>
+#include "Mouse.h"
+#include "Key.h"
+static const char *MouseButtonName(MouseButton button){
+	switch (button)
+	{
+	case MOUSEBUTTON_UNKNOWN:
+		return "Unknown";
+	case MOUSEBUTTON_LEFT:
+		return "Left";
+	case MOUSEBUTTON_RIGHT:
+		return "Right";
+	case MOUSEBUTTON_MIDDLE:
+		return "Middle";
+	case MOUSEBUTTON_BUTTON4:
+		return "Button4";
+	case MOUSEBUTTON_BUTTON5:
+		return "Button5";
+	default:
+		return nullptr;
+	}
+}
 
-Window::Window(void)
+static const char *KeyName(Key key)
 {
-	quit = false;
+	switch (key)
+	{
+	case KEY_UNKNOWN:   return "Unknown";
+	case KEY_A:         return "A";
+	case KEY_B:         return "B";
+	case KEY_C:         return "C";
+	case KEY_D:         return "D";
+	case KEY_E:         return "E";
+	case KEY_F:         return "F";
+	case KEY_G:         return "G";
+	case KEY_H:         return "H";
+	case KEY_I:         return "I";
+	case KEY_J:         return "J";
+	case KEY_K:         return "K";
+	case KEY_L:         return "L";
+	case KEY_M:         return "M";
+	case KEY_N:         return "N";
+	case KEY_O:         return "O";
+	case KEY_P:         return "P";
+	case KEY_Q:         return "Q";
+	case KEY_R:         return "R";
+	case KEY_S:         return "S";
+	case KEY_T:         return "T";
+	case KEY_U:         return "U";
+	case KEY_V:         return "V";
+	case KEY_W:         return "W";
+	case KEY_X:         return "X";
+	case KEY_Y:         return "Y";
+	case KEY_Z:         return "Z";
+	case KEY_NUM0:      return "Num0";
+	case KEY_NUM1:      return "Num1";
+	case KEY_NUM2:      return "Num2";
+	case KEY_NUM3:      return "Num3";
+	case KEY_NUM4:      return "Num4";
+	case KEY_NUM5:      return "Num5";
+	case KEY_NUM6:      return "Num6";
+	case KEY_NUM7:      return "Num7";
+	case KEY_NUM8:      return "Num8";
+	case KEY_NUM9:      return "Num9";
+	case KEY_ESCAPE:    return "Escape";
+	case KEY_LCONTROL:  return "Left Control";
+	case KEY_LSHIFT:    return "Left Shift";
+	case KEY_LALT:      return "Left Alt";
+	case KEY_LSYSTEM:   return "Left System";
+	case KEY_RCONTROL:  return "Right Control";
+	case KEY_RSHIFT:    return "Right Shift";
+	case KEY_RALT:      return "Right Alt";
+	case KEY_RSYSTEM:   return "Right System";
+	case KEY_MENU:      return "Menu";
+	case KEY_LBRACKET:  return "Left Bracket";
+	case KEY_RBRACKET:  return "Right Bracket";
+	case KEY_SEMICOLON: return "Semicolon";
+	case KEY_COMMA:     return "Comma";
+	case KEY_PERIOD:    return "Period";
+	case KEY_QUOTE:     return "Quote";
+	case KEY_SLASH:     return "Slash";
+	case KEY_BACKSLASH: return "Backslash";
+	case KEY_TILDE:     return "Tilde";
+	case KEY_EQUAL:     return "Equal";
+	case KEY_DASH:      return "Dash";
+	case KEY_SPACE:     return "Space";
+	case KEY_RETURN:    return "Return";
+	case KEY_BACK:      return "Back";
+	case KEY_TAB:       return "Tab";
+	case KEY_PAGEUP:    return "Page Up";
+	case KEY_PAGEDOWN:  return "Page Down";
+	case KEY_END:       return "End";
+	case KEY_HOME:      return "Home";
+	case KEY_INSERT:    return "Insert";
+	case KEY_DELETE:    return "Delete";
+	case KEY_ADD:       return "Add";
+	case KEY_SUBTRACT:  return "Substract";
+	case KEY_MULTIPLY:  return "Multiply";
+	case KEY_DIVIDE:    return "Divide";
+	case KEY_LEFT:      return "Left";
+	case KEY_RIGHT:     return "Right";
+	case KEY_UP:        return "Up";
+	case KEY_DOWN:      return "Down";
+	case KEY_NUMPAD0:   return "Numpad 0";
+	case KEY_NUMPAD1:   return "Numpad 1";
+	case KEY_NUMPAD2:   return "Numpad 2";
+	case KEY_NUMPAD3:   return "Numpad 3";
+	case KEY_NUMPAD4:   return "Numpad 4";
+	case KEY_NUMPAD5:   return "Numpad 5";
+	case KEY_NUMPAD6:   return "Numpad 6";
+	case KEY_NUMPAD7:   return "Numpad 7";
+	case KEY_NUMPAD8:   return "Numpad 8";
+	case KEY_NUMPAD9:   return "Numpad 9";
+	case KEY_F1:        return "F1";
+	case KEY_F2:        return "F2";
+	case KEY_F3:        return "F3";
+	case KEY_F4:        return "F4";
+	case KEY_F5:        return "F5";
+	case KEY_F6:        return "F6";
+	case KEY_F7:        return "F7";
+	case KEY_F8:        return "F8";
+	case KEY_F9:        return "F9";
+	case KEY_F10:       return "F10";
+	case KEY_F11:       return "F11";
+	case KEY_F12:       return "F12";
+	case KEY_F13:       return "F13";
+	case KEY_F14:       return "F14";
+	case KEY_F15:       return "F15";
+	case KEY_PAUSE:     return "Pause";
+	default:            return "Unknown Key";
+	}
+}
+Window::Window(void) : mX(0), mY(0), mWidth(0), mHeight(0)
+{
 
 	//log_info("Window init to: %i x %i", this->width, this->height);
 }
@@ -17,167 +146,68 @@ Window::~Window(void)
 
 }
 
-
-void Window::tick(void)
+int Window::get_x() const
 {
-
+	return mX;
 }
 
-
-int Window::getWidth(void)
+int Window::get_y() const
 {
-	return width;
+	return mY;
 }
 
-int Window::getHeight(void)
+int Window::get_width() const
 {
-	return height;
+	return mWidth;
 }
 
-glm::vec4 Window::getViewport(void)
+int Window::get_height() const
 {
-	return glm::vec4(0.0f, 0.0f, width, height);
+	return mHeight;
 }
 
-bool Window::shouldQuit(void)
+bool Window::pop_event(Event *event)
 {
-	return quit;
-}
-
-bool Window::createRenderContext(EGLNativeWindowType nativeWindow, EGLNativeDisplayType nativeDisplay)
-{
-	// Binding rendering API to the OpenGL ES API.
-	if (!eglBindAPI(EGL_OPENGL_ES_API)) {
-		std::cerr << "[ERROR] eglBindAPI\n";
+	if (mEvents.size() > 0 && event)
+	{
+		*event = mEvents.front();
+		mEvents.pop_front();
+		return true;
+	}
+	else{
 		return false;
 	}
+}
 
-	// 1.
-	_display = eglGetDisplay(nativeDisplay);
-	if (_display == EGL_NO_DISPLAY) {
-		std::cerr << "[ERROR] eglGetDisplay: EGL_NO_DISPLAY\n";
-		return false;
+void Window::push_event(Event event)
+{
+	switch (event.Type)
+	{
+	case Event::EVENT_MOVED:
+		mX = event.Move.X;
+		mY = event.Move.Y;
+		break;
+	case Event::EVENT_RESIZED:
+		mWidth = event.Size.Width;
+		mHeight = event.Size.Height;
+		break;
+	default:
+		break;
 	}
 
-	// 2.
-	EGLint major, minor;
-	if (eglInitialize(_display, &major, &minor) == EGL_FALSE) {
-		EGLint error = eglGetError();
-		switch (error) {
-		case EGL_BAD_DISPLAY:
-			std::cerr << "[ERROR] eglInitialize: EGL_BAD_DISPLAY\n";
-			break;
-		case EGL_NOT_INITIALIZED:
-			std::cerr << "[ERROR] eglInitialize: EGL_NOT_INITIALIZED\n";
-			break;
-		default:
-			std::cerr << "[ERROR] eglInitialize: unknown reason, error=" << error << '\n';
-			break;
+	mEvents.push_back(event);
+}
+
+bool Window::did_test_event_fire()
+{
+	Event topEvent;
+	while (pop_event(&topEvent))
+	{
+		if (topEvent.Type == Event::EVENT_TEST)
+		{
+			return true;
 		}
-		return false;
-	}
-	std::cout << "EGL initialized successful, EGL v" << major << "." << minor << '\n';
-
-	// 3. Choose configuration.
-	EGLint attribList[] = {
-		EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
-		EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT_KHR,
-		EGL_RED_SIZE, 8,
-		EGL_GREEN_SIZE, 8,
-		EGL_BLUE_SIZE, 8,
-		EGL_ALPHA_SIZE, 8,
-		EGL_DEPTH_SIZE, 24,
-		EGL_STENCIL_SIZE, 8,
-		EGL_NONE
-	};
-	EGLConfig config;
-	EGLint numConfigs;
-	if (eglChooseConfig(_display, attribList, &config, 1, &numConfigs) == EGL_FALSE) {
-		std::cerr << "[ERROR] eglChooseConfig failed.\n";
-		return false;
-	}
-	if (numConfigs < 1) {
-		std::cerr << "[ERROR] eglChooseConfig error: num_config = 0\n";
-		return false;
 	}
 
-	// 4. Creates an EGL window surface.
-	EGLint nativeAttribList[] = {
-		EGL_NONE
-	};
-	_surface = eglCreateWindowSurface(_display, config, nativeWindow, nativeAttribList);
-	if (_surface == EGL_NO_SURFACE) {
-		EGLint error = eglGetError();
-		switch (error) {
-		case EGL_BAD_MATCH:
-			std::cerr << "[ERROR] eglCreateWindowSurface: EGL_BAD_MATCH\n";
-			break;
-		case EGL_BAD_CONFIG:
-			std::cerr << "[ERROR] eglCreateWindowSurface: EGL_BAD_CONFIG\n";
-			break;
-		case EGL_BAD_NATIVE_WINDOW:
-			std::cerr << "[ERROR] eglCreateWindowSurface: EGL_BAD_NATIVE_WINDOW\n";
-			break;
-		case EGL_BAD_ALLOC:
-			std::cerr << "[ERROR] eglCreateWindowSurface: EGL_BAD_ALLOC\n";
-			break;
-		default:
-			std::cerr << "[ERROR] eglCreateWindowSurface: unknown reason: " << error << "\n";
-			break;
-		}
-		return false;
-	}
-
-
-	// 5. Create Context.
-	const EGLint contextAttribList[] = {
-		EGL_CONTEXT_CLIENT_VERSION, 2, // OpenGL ES 3.0
-		EGL_NONE
-	};
-	_context = eglCreateContext(_display, config, EGL_NO_CONTEXT, contextAttribList);
-	if (_context == EGL_NO_CONTEXT) {
-		EGLint error = eglGetError();
-		switch (error) {
-		case EGL_BAD_CONFIG:
-			std::cerr << "[ERROR] eglCreateContext failed, EGL_BAD_CONFIG.\n";
-			break;
-		default:
-			std::cerr << "[ERROR] eglCreateContext failed, unknown error=" << error << '\n';
-			break;
-		}
-		return false;
-	}
-
-	// Attack an EGL rendering context to EGL surfaces.
-	if (eglMakeCurrent(_display, _surface, _surface, _context) == EGL_FALSE) {
-		std::cerr << "[ERROR] eglMakeCurrent failed.\n";
-		return false;
-	}
-
-	return true;
-}
-
-void Window::destroyRenderContext()
-{
-	if (_display != nullptr) {
-		eglMakeCurrent(_display, _surface, _surface, _context);
-		eglDestroyContext(_display, _context);
-		eglDestroySurface(_display, _surface);
-
-		eglTerminate(_display);
-
-		_context = nullptr;
-		_surface = nullptr;
-		_display = nullptr;
-	}
-}
-
-void Window::swapBuffers()
-{
-	eglSwapBuffers(_display, _surface);
-}
-
-unsigned int Window::getDeltaTime()
-{
-	return 20;
+	return false;
 }

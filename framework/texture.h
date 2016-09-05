@@ -9,6 +9,10 @@ public:
 	Texture();
 	Texture(const std::string& filename);
 	virtual ~Texture();
+
+	void LoadFile(const std::string& filename);
+	void Bind();
+	void UnBind();
 protected:
 private:
 	GLuint m_textureid = 0;
