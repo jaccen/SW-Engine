@@ -1,0 +1,26 @@
+﻿生成启动时间为 2016/9/7 23:38:38。
+     1>项目“D:\SW-Engine\Build-Win32\example\RedTriangle.vcxproj”在节点 2 上(Build 个目标)。
+     1>PreBuildEvent:
+         setlocal
+         "C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy D:/SW-Engine/external/lib/win32/libGLESv2.dll D:/SW-Engine/Build-Win32/example/
+         if %errorlevel% neq 0 goto :cmEnd
+         "C:\Program Files (x86)\CMake\bin\cmake.exe" -E copy D:/SW-Engine/external/lib/win32/libEGL.dll D:/SW-Engine/Build-Win32/example/
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         :VCEnd
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"D:\SW-Engine\external\include" /I"D:\SW-Engine\external\glm-0.9.6.3" /I"D:\SW-Engine\framework" /nologo /W3 /WX- /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D "CMAKE_INTDIR=\"Release\"" /D _MBCS /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"RedTriangle.dir\Release\\" /Fd"RedTriangle.dir\Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "D:\SW-Engine\example\Scene.cpp"
+         Scene.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\SW-Engine\Build-Win32\example\Release\RedTriangle.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:/SW-Engine/external/lib/win32" /LIBPATH:"D:/SW-Engine/external/lib/win32/Release" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib ..\..\lib\Release\framework.lib ..\..\external\lib\win32\libGLESv2.lib ..\..\external\lib\win32\libEGL.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"D:/SW-Engine/Build-Win32/example/Release/RedTriangle.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/SW-Engine/Build-Win32/example/Release/RedTriangle.lib" /MACHINE:X86 /SAFESEH  /machine:X86 RedTriangle.dir\Release\Scene.obj
+         RedTriangle.vcxproj -> D:\SW-Engine\Build-Win32\example\Release\RedTriangle.exe
+     1>已完成生成项目“D:\SW-Engine\Build-Win32\example\RedTriangle.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.06

@@ -31,7 +31,7 @@ void Camera::Ortho(float left, float right, float top, float bottom, float zNear
 	_projectionMatrix = glm::ortho(left, right, top, bottom, zNear, zFar);
 }
 
-void Camera::LookAt(vec3 eye, vec3 center, vec3 up)
+void Camera::LookAt(glm::vec3 eye, glm::vec3 center, glm::vec3 up)
 {
 	_view = glm::lookAt(eye, center, up);
 }
@@ -51,7 +51,7 @@ void Camera::UpdateProjection()
 
 void Camera::UpdateView()
 {
-	vec3 front;
+	glm::vec3 front;
 
 	front.x = glm::cos(glm::radians(_rotation.y)) * cos(glm::radians(_rotation.x));
 	front.y = glm::sin(glm::radians(_rotation.x));
